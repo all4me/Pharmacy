@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Test_Pharmacy.Models.Client>
+@{
+    ViewBag.Title = "Home Page";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-3">
+            @using (Html.BeginForm())
+            {
+                <div class="form-horizontal" style="position:fixed">
+                    <p>
+                        @Html.TextBox("F_name", "", new { @class = "form-control", autocomplete = "off", placeholder = "Fill First Name" }) <br />
+                        @Html.TextBox("L_Name", "", new { @class = "form-control", autocomplete = "off", placeholder = "Fill Last Name" }) <br />
+                        <input type="submit" class="btn btn-primary" value="Search" />
+                        @Html.ActionLink("Create Client", "CreateClient", "Home", new { @class = "btn btn-primary" })
+                    </p>
+                </div>
+            }
+        </div>
+        <div class="col-xs-3"></div>
+        <div class="col-xs-6" style="overflow-y:auto; height:500px">
+            <ul>
+                @foreach (var s in Model)
+                {
+                    <li>
+                        @Html.DisplayFor(model => s.FName)
+                        @Html.DisplayFor(model => s.LName)
+                        @Html.ActionLink("Profile", "ClientDetails", new { id = s.Id }, new { @class = "btn btn-link" })
+                        <hr />
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

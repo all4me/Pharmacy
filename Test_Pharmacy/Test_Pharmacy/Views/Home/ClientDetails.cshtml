@@ -1,0 +1,109 @@
+﻿@model Test_Pharmacy.Models.ViewModels.ClientVisitViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="row">
+    <div class="col-xs-4" >
+        <h4>Client</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.client.FName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.client.FName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.client.LName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.client.LName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.client.DateOfBirth)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.client.DateOfBirth)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.client.Adress)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.client.Adress)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.client.Phone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.client.Phone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.client.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.client.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.client.R_Eye)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.client.R_Eye)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.client.L_Eye)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.client.L_Eye)
+            </dd>
+
+        </dl>
+    </div>
+    <div class="col-xs-8">
+        <h4>Visits</h4>
+        <hr />
+        @Html.ActionLink("Add Visit", "CreateVisit", "Home",new {vid =Model.client.Id}, new { @class = "btn btn-primary" })
+
+        <dl class="dl-horizontal" style="overflow-y:auto">
+            @foreach (var item in Model.Visits)
+            {
+                <dd>
+                    @Html.DisplayFor(modelItem => item.OrderAmount)
+                </dd>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </dd>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.VisitDate)
+                </dd>
+                <dd>
+                    @Html.ActionLink("Edit", "VisitEdit", new { vid = item.Id }) |
+                    @Html.ActionLink("Details", "VisitDetails", new { vid = item.Id }) |
+                    @Html.ActionLink("Delete", "VisitDelete", new { vid = item.Id })
+                </dd>
+            }
+        </dl>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditClient", new { id = Model.client.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
