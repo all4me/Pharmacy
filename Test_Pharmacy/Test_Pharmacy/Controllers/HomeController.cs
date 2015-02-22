@@ -86,7 +86,7 @@ namespace Test_Pharmacy.Controllers
 
         public ActionResult CreateVisit()
         {
-            ViewBag.ClientId = new SelectList(con.Clients, "Id", "FName");
+            ViewBag.ClientId = new SelectList(con.Clients, "Id", "LName");
             return View();
         }
 
@@ -102,7 +102,7 @@ namespace Test_Pharmacy.Controllers
                 return RedirectToAction("ClientDetails/" + visit.ClientId);
             }
 
-            ViewBag.ClientId = new SelectList(con.Clients, "Id", "FName", visit.ClientId);
+            ViewBag.ClientId = new SelectList(con.Clients, "Id", "LName", visit.ClientId);
             return View(visit);
         }
         public ActionResult VisitEdit(int? vid)
